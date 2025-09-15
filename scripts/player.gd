@@ -46,13 +46,13 @@ func _physics_process(_delta):
 	# Set facing to "right", "left", "down", or "up"
 	# Only update facing when actually moving (direction != 0)
 	if xDirection>0:
-		var facing = "right"
+		facing = "right"
 	elif xDirection<0:
-		var facing = "left"
+		facing = "left"
 	elif yDirection >0:
-		var facing = "down"	
+		facing = "down"	
 	elif yDirection <0:
-		var facing = "up"	
+		facing = "up"	
 	# TODO: Update animation based on facing direction
 	# Call your update_animation() function here
 	update_animation()
@@ -62,11 +62,14 @@ func _physics_process(_delta):
 
 # TODO: Create animation function (add this outside of _physics_process)
 func update_animation():
-	_animation_player.play("idle_"+facing)
-	# TODO: Set the animation based on the facing direction
-	# Use: _animation_player.play("idle_" + facing)
-	# This combines "idle_" with whatever direction we're facing
-	pass
+	if xDirection == 0 && yDirection == 0:
+		_animation_player.play("idle_"+ facing)
+	else: _animation_player.play("walk_"+ facing)
+		
+		# TODO: Set the animation based  on the facing direction
+		# Use: _animation_player.play("idle_" + facing)
+		# This combines "idle_" with whatever direction we're facing
+	
 
 
 # TODO: Create health change function for interactions
