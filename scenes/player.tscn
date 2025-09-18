@@ -1,7 +1,7 @@
 [gd_scene load_steps=109 format=3 uid="uid://dboamhf2yhiqx"]
 
 [ext_resource type="Texture2D" uid="uid://cgy67vkgin2hs" path="res://sprites/player_spritesheet.png" id="1_2tuxj"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_hf8rj"]
+[ext_resource type="Script" uid="uid://duwf4fulbsvq0" path="res://scripts/player.gd" id="1_hf8rj"]
 [ext_resource type="Texture2D" uid="uid://sn2iyqhlcmeq" path="res://sprites/slingshot_spritesheet.png" id="2_eouhx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vv0xi"]
@@ -100,10 +100,6 @@ region = Rect2(384, 256, 64, 64)
 atlas = ExtResource("1_2tuxj")
 region = Rect2(448, 256, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x6qyc"]
-atlas = ExtResource("1_2tuxj")
-region = Rect2(0, 256, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_dd1cp"]
 atlas = ExtResource("1_2tuxj")
 region = Rect2(0, 384, 64, 64)
@@ -115,6 +111,10 @@ region = Rect2(512, 576, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gs3p"]
 atlas = ExtResource("1_2tuxj")
 region = Rect2(0, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6qyc"]
+atlas = ExtResource("1_2tuxj")
+region = Rect2(0, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcf28"]
 atlas = ExtResource("2_eouhx")
@@ -507,14 +507,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x6qyc")
-}],
-"loop": true,
-"name": &"idle_back",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_dd1cp")
 }],
 "loop": true,
@@ -535,6 +527,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_right",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6qyc")
+}],
+"loop": true,
+"name": &"idle_up",
 "speed": 12.0
 }, {
 "frames": [{
@@ -807,7 +807,7 @@ script = ExtResource("1_hf8rj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_iboci")
-animation = &"idle_left"
+animation = &"idle_up"
 autoplay = "idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

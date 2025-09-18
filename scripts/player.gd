@@ -26,15 +26,6 @@ func _physics_process(_delta):
 	# Same idea, but for up and down movement
 	yDirection = Input.get_axis("ui_up", "ui_down")
 	
-
-	# TODO: Calculate X movement by multiplying direction × speed
-	# This gives us the actual pixels to move this frame
-	# If direction is 1 and speed is 300, we get 300 pixels right
-	# If direction is -1 and speed is 300, we get -300 pixels (left)
-	
-	
-	# TODO: Calculate Y movement the same way
-	
 	
 	# TODO: Set the player's velocity (how fast they're moving)
 	# Godot's CharacterBody2D uses a velocity system
