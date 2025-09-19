@@ -1,24 +1,27 @@
 extends CharacterBody2D
 
 # TODO: Add speed variable for how fast projectile moves
-# var speed = ?
+var speed = 300
 
 # TODO: Add direction variable to store which way to move
-# var direction = Vector2.ZERO
+var direction = Vector2.ZERO
+
 
 func _physics_process(_delta):
 	# TODO: Calculate movement using direction and speed
 	# Similar to player movement: velocity = direction * speed
-	
+	velocity.x = speed*direction
+	velocity.y = speed*direction
+
 	
 	# TODO: Apply the movement
 	# Use: move_and_slide()
-	
+	move_and_slide()
 	
 	# TODO: Print movement for debugging
 	# print("Projectile moving: ", velocity)
+	print("Projectile moving:", velocity)
 	
-	pass
 
 # TODO: Create function to set projectile direction
 func set_direction(facing_direction):

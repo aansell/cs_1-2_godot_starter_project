@@ -59,13 +59,22 @@ func _physics_process(_delta):
 		facing = "down"	
 	elif yDirection <0:
 		facing = "up"	
+		
+		
+	if Input.is_action_just_pressed("ui_accept"):
+		shoot()
+		
 	# TODO: Update animation based on facing direction
 	# Call your update_animation() function here
 	update_animation()
 	# TODO: Actually apply the movement
 	# This is a special Godot function that makes the movement happen
 	move_and_slide()
-
+	
+	
+	
+		
+	
 # TODO: Create animation function (add this outside of _physics_process)
 func update_animation():
 	if xDirection == 0 && yDirection == 0:
@@ -98,11 +107,12 @@ func change_health(amount):
 func shoot():
 	# TODO: Create a new projectile instance
 	# Look at the documentation examples in the lesson
-	
-	
+	var projectile_scene = preload("res://scenes/coin.tscn")
+	var new_projectile = projectile_scene.instantiate()
+	get_parent().add_child(new_projectile)
 	# TODO: Set projectile position to player position
 	# Look at the "Setting Object Position" example
-	
+	new_projectile.global_position = global_position
 	
 	# TODO: Set projectile direction using facing variable
 	# Look at the "Calling Functions on Other Objects" example
@@ -110,9 +120,9 @@ func shoot():
 	
 	# TODO: Add projectile to the game world
 	# Look at the "Adding Objects to the Game World" example
-	
-	
+	get_parent().add_child(new_projectile)
+	add_child(new_projectile)
 	# TODO: Print shooting confirmation
 	# print("Shot projectile facing: ", facing)
+	print("Shot projectile facing:", facing)
 	
-	pass
