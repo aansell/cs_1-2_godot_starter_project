@@ -101,18 +101,20 @@ func change_health(amount):
 	# TODO: Check if health <= 0 for death (optional challenge)
 	print ("Player health:", str(health))
 	print("Health changed by: ", amount)
-	 
-
+	
+	
 # TODO: Create shooting function
 func shoot():
 	# TODO: Create a new projectile instance
 	# Look at the documentation examples in the lesson
-	var projectile_scene = preload("res://scenes/coin.tscn")
+	var projectile_scene = preload("res://scenes/projectile.tscn")
 	var new_projectile = projectile_scene.instantiate()
 	get_parent().add_child(new_projectile)
+	new_projectile.set_direction(facing)
 	# TODO: Set projectile position to player position
 	# Look at the "Setting Object Position" example
 	new_projectile.global_position = global_position
+	new_projectile.position += Vector2(0,-25)
 	
 	# TODO: Set projectile direction using facing variable
 	# Look at the "Calling Functions on Other Objects" example
