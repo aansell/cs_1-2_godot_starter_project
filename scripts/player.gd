@@ -1,16 +1,16 @@
 extends CharacterBody2D
 @onready var _animation_player: AnimatedSprite2D = $AnimatedSprite2D
 
-var xSpeed = 300.0
+var xSpeed = 200.0
 var xDirection = 0
 var facing = "down"
-var ySpeed = 300.0
+var ySpeed = 200.0
 var yDirection = 0
 var coins = 0
 
 # TODO: Add health system variables
-var health = 100
-var maxHealth = 100
+@export var maxHealth = 10
+@export var health = maxHealth
 
 # TODO: Add projectile scene for shooting
 # var projectile_scene = preload("res://scenes/projectile.tscn")
@@ -97,12 +97,14 @@ func change_health(amount):
 	elif health <= 0 :
 		health = 0
 		print ("Player died!")
+		queue_free()
 	# TODO: Print the new health value
 	# TODO: Check if health <= 0 for death (optional challenge)
 	print ("Player health:", str(health))
 	print("Health changed by: ", amount)
 	
-	
+	if health == 0:
+		die()
 # TODO: Create shooting function
 func shoot():
 	# TODO: Create a new projectile instance
@@ -113,7 +115,7 @@ func shoot():
 	new_projectile.set_direction(facing)
 	# TODO: Set projectile position to player position
 	# Look at the "Setting Object Position" example
-	new_projectile.global_position = global_position
+	new_projectile.global_position = position
 	new_projectile.position += Vector2(0,-25)
 	
 	# TODO: Set projectile direction using facing variable
@@ -127,4 +129,12 @@ func shoot():
 	# TODO: Print shooting confirmation
 	# print("Shot projectile facing: ", facing)
 	print("Shot projectile facing:", facing)
+
+func die():
+		var game_over_scene = preload("res://scenes/game_over.tscn")
+		var new_game_over = game_over_scene.instantiate()
+		get_parent().add_child(new_game_over)
+		new_game_over.global_position = position
+		#scale_amount_set_param(4)
+
 	

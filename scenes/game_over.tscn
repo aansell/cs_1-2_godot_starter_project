@@ -3,4 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://4655i7r7kgy6" path="res://sprites/GameOver.png" id="1_vkfg6"]
 
 [node name="Game Over" type="Sprite2D"]
+z_index = 1
+position = Vector2(0, -300)
+scale = Vector2(10, 10)
 texture = ExtResource("1_vkfg6")

@@ -1,7 +1,7 @@
 extends Area2D
 
 # TODO: Add speed variable for how fast projectile moves
-var speed = 300
+var speed = 400
 
 # TODO: Add direction variable to store which way to move
 var direction = Vector2(1,0)
@@ -38,7 +38,7 @@ func set_direction(_facing):
 		direction = Vector2.LEFT
 	# TODO: Print the direction for debugging
 	# print("Projectile direction set to: ", direction)
-	print("projetile is facing " + _facing) 
+	print("projectile is facing " + _facing) 
 	
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
