@@ -24,7 +24,7 @@ func _physics_process(_delta):
 	
 
 # TODO: Create function to set projectile direction
-func set_direction(_facing):
+func set_direction(_facing : String):
 	# TODO: Convert facing string to Vector2 direction
 	# Use if statements: "up" -> Vector2.UP, "down" -> Vector2.DOWN, etc.
 	# Set direction = the Vector2 result
@@ -39,6 +39,7 @@ func set_direction(_facing):
 	# TODO: Print the direction for debugging
 	# print("Projectile direction set to: ", direction)
 	print("projectile is facing " + _facing) 
+	
 	
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

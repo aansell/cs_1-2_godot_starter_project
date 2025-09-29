@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bwo2tsegwct04"]
+[gd_scene load_steps=13 format=3 uid="uid://bwo2tsegwct04"]
 
+[ext_resource type="Script" uid="uid://n6ipgto0ijdb" path="res://scripts/turret.gd" id="1_fgrfj"]
 [ext_resource type="Texture2D" uid="uid://dat7h57mxtul0" path="res://sprites/Tiles/items/turret.png" id="1_sqxf6"]
-[ext_resource type="Texture2D" uid="uid://lah76qx23g3n" path="res://sprites/Tiles/items/turret_projectile.png" id="2_8nnat"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0aqd3"]
 atlas = ExtResource("1_sqxf6")
@@ -68,47 +68,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qylyk"]
 size = Vector2(10, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgfrr"]
-atlas = ExtResource("2_8nnat")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d6sow"]
-atlas = ExtResource("2_8nnat")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n6hq7"]
-atlas = ExtResource("2_8nnat")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i1lp5"]
-atlas = ExtResource("2_8nnat")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rbwvw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vgfrr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d6sow")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n6hq7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i1lp5")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsjvi"]
-size = Vector2(7.25, 6.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgrfj"]
 
 [node name="MinoTauret6" type="CharacterBody2D"]
 position = Vector2(-2, -16)
+script = ExtResource("1_fgrfj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l45e7")
@@ -118,13 +82,10 @@ animation = &"idle"
 position = Vector2(2, 10)
 shape = SubResource("RectangleShape2D_qylyk")
 
-[node name="Projectile" type="Area2D" parent="."]
-position = Vector2(0, -8)
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Projectile"]
-sprite_frames = SubResource("SpriteFrames_rbwvw")
-frame_progress = 0.589616
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(7, 7)
+shape = SubResource("CircleShape2D_fgrfj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile"]
-position = Vector2(2.625, 1)
-shape = SubResource("RectangleShape2D_qsjvi")
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
