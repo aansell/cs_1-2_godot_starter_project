@@ -11,8 +11,8 @@ var yDirection = 0
 # var health = ?
 # var maxHealth = ?
 
-# TODO: Add projectile scene for shooting
-# var projectile_scene = preload("res://scenes/projectile.tscn")
+func _ready() -> void:
+	pass
 
 func _physics_process(_delta):
 	# TODO: Get horizontal input (left/right keys)
@@ -65,22 +65,15 @@ func change_health(amount):
 # TODO: Create shooting function
 func shoot():
 	# TODO: Create a new projectile instance
-	# Look at the documentation examples in the lesson
-	
+
 	
 	# TODO: Set projectile position to player position
-	# Look at the "Setting Object Position" example
-	
+
 	
 	# TODO: Set projectile direction using facing variable
-	# Look at the "Calling Functions on Other Objects" example
-	
+
 	
 	# TODO: Add projectile to the game world
-	# Look at the "Adding Objects to the Game World" example
 	
-	
-	# TODO: Print shooting confirmation
-	# print("Shot projectile facing: ", facing)
-	
+
 	pass

@@ -43,7 +43,6 @@ animations = [{
 }]
 
 [node name="Coin" type="Area2D"]
-position = Vector2(4.76837e-07, -8)
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_8025i")
 

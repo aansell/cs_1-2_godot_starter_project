@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bpylfuifkdk6l"]
 
+[ext_resource type="Script" uid="uid://cobpbxq4pqorg" path="res://scripts/spike.gd" id="1_7a7y0"]
 [ext_resource type="Texture2D" uid="uid://c1qgyb1qwjh00" path="res://sprites/items/Spike.png" id="1_pg0pt"]
-[ext_resource type="PackedScene" uid="uid://ccymai156a6dr" path="res://scenes/health.tscn" id="2_4j08g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mjjf"]
 size = Vector2(58, 53.25)
@@ -23,6 +23,7 @@ animations = [{
 
 [node name="Spike" type="Area2D" groups=["spike"]]
 scale = Vector2(0.5, 0.5)
+script = ExtResource("1_7a7y0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -0.625)
@@ -31,5 +32,3 @@ shape = SubResource("RectangleShape2D_7mjjf")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_78rsk")
 animation = &"spikes"
-
-[node name="Health" parent="." instance=ExtResource("2_4j08g")]
