@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccndc0shs6mym"]
 
-[ext_resource type="Script" uid="uid://c3yfibnlj38rs" path="res://scripts/coins.gd" id="1_e8ik0"]
+[ext_resource type="Script" uid="uid://cl28htfterbk4" path="res://scripts/enemy_projectile.gd" id="1_e8ik0"]
 [ext_resource type="Texture2D" uid="uid://cmfkqyki7kwt" path="res://sprites/items/Coin_Animation.png" id="2_j7vux"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ok8aq"]
@@ -42,7 +42,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Coin" type="Area2D"]
+[node name="Enemy_projectile" type="Area2D"]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_e8ik0")
 
