@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://dpdol3rld7bec"]
 
-[ext_resource type="Texture2D" uid="uid://dsnljdmimsonc" path="res://sprites/Tiles/items/chest.png" id="1_ko57f"]
+[ext_resource type="Texture2D" uid="uid://dsnljdmimsonc" path="res://sprites/items/chest.png" id="1_ko57f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q21ot"]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c31xf4rydvqdp"
-path="res://.godot/imported/Axe_item.png-648c3790d8f5ef92f509a77778516b63.ctex"
+uid="uid://dh32p744wpt4y"
+path="res://.godot/imported/arrow.png-f41dc4bb43ae0f3907d1b9880a7a4b07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Tiles/items/Axe_item.png"
-dest_files=["res://.godot/imported/Axe_item.png-648c3790d8f5ef92f509a77778516b63.ctex"]
+source_file="res://sprites/items/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-f41dc4bb43ae0f3907d1b9880a7a4b07.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bqwd7uptu4bbq"]
 
-[ext_resource type="Texture2D" uid="uid://bl5vm2j0n6sxa" path="res://sprites/Tiles/items/ALever.png" id="1_iorl1"]
+[ext_resource type="Texture2D" uid="uid://bl5vm2j0n6sxa" path="res://sprites/items/ALever.png" id="1_iorl1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kcve"]
 size = Vector2(58, 27)

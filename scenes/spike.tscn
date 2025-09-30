@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bpylfuifkdk6l"]
 
-[ext_resource type="Texture2D" uid="uid://c1qgyb1qwjh00" path="res://sprites/Tiles/items/Spike.png" id="1_pg0pt"]
+[ext_resource type="Texture2D" uid="uid://c1qgyb1qwjh00" path="res://sprites/items/Spike.png" id="1_pg0pt"]
 [ext_resource type="PackedScene" uid="uid://ccymai156a6dr" path="res://scenes/health.tscn" id="2_4j08g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mjjf"]

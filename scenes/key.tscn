@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmjwvyc35hdqh"]
 
-[ext_resource type="Texture2D" uid="uid://7pm0b6x453jw" path="res://sprites/Tiles/items/key.png" id="1_nroe2"]
+[ext_resource type="Texture2D" uid="uid://7pm0b6x453jw" path="res://sprites/items/key.png" id="1_nroe2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhppc"]
 

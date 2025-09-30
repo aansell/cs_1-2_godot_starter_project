@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl5vm2j0n6sxa"
-path="res://.godot/imported/ALever.png-3f13d680b9f216681d8612dea358d2a2.ctex"
+uid="uid://c31xf4rydvqdp"
+path="res://.godot/imported/Axe_item.png-97f71642daad319e7ed0f8423274704a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Tiles/items/ALever.png"
-dest_files=["res://.godot/imported/ALever.png-3f13d680b9f216681d8612dea358d2a2.ctex"]
+source_file="res://sprites/items/Axe_item.png"
+dest_files=["res://.godot/imported/Axe_item.png-97f71642daad319e7ed0f8423274704a.ctex"]
 
 [params]
 

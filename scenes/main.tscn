@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://clxiycjhkoytl" path="res://sprites/Download34266.png" id="8_ejm08"]
 [ext_resource type="PackedScene" uid="uid://bmjwvyc35hdqh" path="res://scenes/key.tscn" id="9_t8tki"]
 [ext_resource type="PackedScene" uid="uid://c7ppmxv7gcxjl" path="res://scenes/coin.tscn" id="9_wjn7r"]
-[ext_resource type="Texture2D" uid="uid://dsnljdmimsonc" path="res://sprites/Tiles/items/chest.png" id="10_rpv53"]
+[ext_resource type="Texture2D" uid="uid://dsnljdmimsonc" path="res://sprites/items/chest.png" id="10_rpv53"]
 [ext_resource type="PackedScene" uid="uid://dpdol3rld7bec" path="res://scenes/locked_chest.tscn" id="13_8t6ui"]
-[ext_resource type="Texture2D" uid="uid://bhxhn8cbpsqwy" path="res://sprites/Tiles/items/cart.png" id="14_53jwk"]
+[ext_resource type="Texture2D" uid="uid://bhxhn8cbpsqwy" path="res://sprites/items/cart.png" id="14_53jwk"]
 [ext_resource type="PackedScene" uid="uid://ddq1bkyn8j1by" path="res://scenes/melee_minotaur.tscn" id="15_dokvp"]
 [ext_resource type="PackedScene" uid="uid://bwo2tsegwct04" path="res://scenes/mini_tauret.tscn" id="16_oljba"]
 
