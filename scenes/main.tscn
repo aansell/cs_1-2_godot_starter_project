@@ -10587,6 +10587,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q21ot"]
+size = Vector2(49, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_011f2"]
 atlas = ExtResource("10_rpv53")
@@ -10802,7 +10803,7 @@ tile_set = SubResource("TileSet_u88xh")
 [node name="Player" parent="." instance=ExtResource("6_buv0p")]
 z_index = 1000
 y_sort_enabled = true
-position = Vector2(12.27, -23.49)
+position = Vector2(4, -93)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
@@ -10835,6 +10836,8 @@ autoplay = "naked_dance"
 [node name="Items" type="Node" parent="."]
 
 [node name="Key" parent="Items" instance=ExtResource("9_t8tki")]
+z_index = 1
+position = Vector2(-364, -107)
 
 [node name="Key2" parent="Items" instance=ExtResource("9_t8tki")]
 position = Vector2(701, 88)
@@ -10908,6 +10911,7 @@ position = Vector2(-400, -373)
 position = Vector2(-400, -352)
 
 [node name="Locked Chest" parent="Items" instance=ExtResource("13_8t6ui")]
+position = Vector2(135, 82)
 
 [node name="Locked Chest2" parent="Items" instance=ExtResource("13_8t6ui")]
 position = Vector2(365, 42)
@@ -10915,16 +10919,19 @@ position = Vector2(365, 42)
 [node name="Unlocked Chest" type="Area2D" parent="Items"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Unlocked Chest"]
+position = Vector2(532.5, 335)
 shape = SubResource("RectangleShape2D_q21ot")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Items/Unlocked Chest/CollisionShape2D"]
-position = Vector2(391, 401)
+position = Vector2(1.5, 0)
 sprite_frames = SubResource("SpriteFrames_krpk6")
 animation = &"unlocked"
 
 [node name="Cart" type="Area2D" parent="Items"]
+position = Vector2(3, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Cart"]
+position = Vector2(-367, -103)
 shape = SubResource("RectangleShape2D_fs85y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Items/Cart"]
@@ -10949,6 +10956,7 @@ position = Vector2(305, 400)
 [node name="Enemies" type="Node" parent="."]
 
 [node name="MinoTauret" parent="Enemies" instance=ExtResource("16_oljba")]
+position = Vector2(-127, -28)
 
 [node name="MinoTauret2" parent="Enemies" instance=ExtResource("16_oljba")]
 position = Vector2(-356, -382)
