@@ -8,6 +8,7 @@ var facing = "down"
 var ySpeed = 300.0
 var yDirection = 0
 var coins = 0
+@export var offset : Vector2 = Vector2(0, -25)
 
 # TODO: Add health system variables
 var maxHealth = 10
@@ -91,7 +92,7 @@ func shoot():
 	var projectile_clone = projectile_original.instantiate()
 	
 	# TODO: Set projectile position to player position
-	projectile_clone.global_position = position
+	projectile_clone.global_position = position + offset
 	
 	# TODO: Set projectile direction using facing variable
 	projectile_clone.set_direction(facing)

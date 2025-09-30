@@ -1,8 +1,7 @@
-[gd_scene load_steps=130 format=3 uid="uid://ddq1bkyn8j1by"]
+[gd_scene load_steps=129 format=3 uid="uid://ddq1bkyn8j1by"]
 
 [ext_resource type="Texture2D" uid="uid://busa5myjbwb4i" path="res://sprites/Download38899.png" id="1_nohjn"]
 [ext_resource type="Texture2D" uid="uid://dqoamfql4kdnq" path="res://sprites/Download19204.png" id="2_7o3s3"]
-[ext_resource type="PackedScene" uid="uid://ccymai156a6dr" path="res://scenes/health.tscn" id="3_y37pd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dgyv5"]
 atlas = ExtResource("1_nohjn")
@@ -1016,5 +1015,3 @@ position = Vector2(0, 9.5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_xl86w")
 disabled = true
-
-[node name="Health" parent="." instance=ExtResource("3_y37pd")]
