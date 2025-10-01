@@ -10,8 +10,8 @@ var yDirection = 0
 var coins = 0
 
 # TODO: Add health system variables
-@export var maxHealth = 10
-@export var health = maxHealth
+@export var maxHealth = 100
+@export var health = 100
 
 # TODO: Add projectile scene for shooting
 # var projectile_scene = preload("res://scenes/projectile.tscn")
@@ -136,7 +136,7 @@ func die():
 		var new_game_over = game_over_scene.instantiate()
 		get_parent().add_child(new_game_over)
 		new_game_over.global_position = position
-		new_game_over.position += Vector2(330,330)
+		new_game_over.position = Vector2(580,550)
 		#scale_amount_set_param(4)
 
 	

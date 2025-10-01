@@ -10802,7 +10802,7 @@ tile_set = SubResource("TileSet_u88xh")
 [node name="Player" parent="." instance=ExtResource("6_buv0p")]
 z_index = 1000
 y_sort_enabled = true
-position = Vector2(-90, 0)
+position = Vector2(0, -95)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
@@ -10834,12 +10834,12 @@ autoplay = "naked_dance"
 
 [node name="Items" type="Node" parent="."]
 
-[node name="Key" parent="Items" instance=ExtResource("9_t8tki")]
+[node name="Key1" parent="Items" instance=ExtResource("9_t8tki")]
 
 [node name="Key2" parent="Items" instance=ExtResource("9_t8tki")]
 position = Vector2(701, 88)
 
-[node name="Lever" parent="Items" instance=ExtResource("8_17j5i")]
+[node name="Lever1" parent="Items" instance=ExtResource("8_17j5i")]
 position = Vector2(-289, 527)
 
 [node name="Lever2" parent="Items" instance=ExtResource("8_17j5i")]
@@ -10854,7 +10854,7 @@ position = Vector2(-538, 125)
 [node name="Coins" type="Node" parent="Items"]
 
 [node name="Coin" parent="Items/Coins" instance=ExtResource("9_wjn7r")]
-position = Vector2(95, -31)
+position = Vector2(103, -27)
 
 [node name="Coin2" parent="Items/Coins" instance=ExtResource("9_wjn7r")]
 position = Vector2(419, 221)
@@ -10949,6 +10949,7 @@ position = Vector2(305, 400)
 [node name="Enemies" type="Node" parent="."]
 
 [node name="MinoTauret" parent="Enemies" instance=ExtResource("16_oljba")]
+position = Vector2(222, 180)
 
 [node name="MinoTauret2" parent="Enemies" instance=ExtResource("16_oljba")]
 position = Vector2(-356, -382)

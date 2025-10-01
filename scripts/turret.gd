@@ -64,5 +64,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	# Update player detection state
 		player_in_range=true
 		shoot_at_player(body.position)
-		
+func _on_body_entered (body):
+	if body.name == "projectile":
+		queue_free()
 	# Look at "Boolean Variables and State Tracking" documentation

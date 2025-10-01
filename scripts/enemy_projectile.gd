@@ -25,3 +25,7 @@ func set_direction(_target):
 	direction = (_target-position).normalized()
 	print(position)
 	
+func _on_body_entered(body):
+	if body.name == "Player":
+		body.change_health(-10)
+		print("Player got shot!")

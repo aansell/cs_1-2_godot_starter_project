@@ -40,9 +40,8 @@ position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_1kcve")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-41, -65)
+position = Vector2(-40, -66)
 sprite_frames = SubResource("SpriteFrames_3d23c")
 animation = &"on"
-frame_progress = 0.527
 centered = false
 offset = Vector2(12, 0)
