@@ -3,7 +3,10 @@ extends CharacterBody2D
 # TODO: Extend your enum from Lesson 8 to include ATTACK state
 # Look at "Understanding Enums" documentation
 # You need IDLE, PATROL, CHASE, and ATTACK states
-
+func on_body_entered(body):
+	if body.name == "projectile":
+		print ("Enemy Killed")
+		queue_free()
 # TODO: Add all your variables from Lesson 8
 # State tracking, timers, patrol variables, player reference, chase distances
 
@@ -16,7 +19,7 @@ func _ready():
 	# Initialize all your variables and get player reference
 	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# TODO: Handle current state behavior for all four states
 	# Look at "Organizing State Behavior" documentation
 	# IDLE, PATROL, CHASE, and ATTACK all need different behaviors

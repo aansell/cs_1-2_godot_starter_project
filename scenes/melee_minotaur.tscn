@@ -1001,6 +1001,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xl86w"]
+radius = 30.149628
 
 [node name="MeleeMinotaur" type="CharacterBody2D"]
 position = Vector2(0, -30)
