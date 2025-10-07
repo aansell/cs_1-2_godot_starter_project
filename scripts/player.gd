@@ -2,6 +2,8 @@ extends CharacterBody2D
 @onready var _animation_player: AnimatedSprite2D = $AnimatedSprite2D
 var projectile_original = preload("res://scenes/projectile.tscn")
 
+var is_attacking = false
+var attack_timer = 0.67
 var xSpeed = 300.0
 var xDirection = 0
 var facing = "down"
@@ -18,24 +20,26 @@ func _ready() -> void:
 	pass
 
 func _physics_process(_delta):
-	# TODO: Get horizontal input (left/right keys)
-	# Input.get_axis checks two keys and gives us a number:
-	# - When LEFT is pressed: returns -1.0
-	# - When RIGHT is pressed: returns 1.0  
-	# - When NOTHING is pressed: returns 0.0
+	if Input.is_action_pressed("ui_accept"):
+		is_attacking = true
+		print("attack is true")
+	
+	if is_attacking:
+		attack_timer = _delta
+		if attack_timer < 0:
+			is_attacking = false
+			attack_timer = 0.67
+			print("attack done")
 	xDirection = Input.get_axis("ui_left", "ui_right")
 	
-	# TODO: Get vertical input (up/down keys)  
-	# Same idea, but for up and down movement
+	
 	yDirection = Input.get_axis("ui_up", "ui_down")
 	
-	# TODO: Set the player's velocity (how fast they're moving)
-	# Godot's CharacterBody2D uses a velocity system
-	#velocity is a vector, define it as a product of speed and direction
+	
 	velocity.x = xDirection * xSpeed
 	velocity.y = yDirection * ySpeed
 	
-	# TODO: Update facing direction based on movement
+	
 	if xDirection > 0:
 		facing = "right"
 	elif xDirection < 0:
@@ -45,7 +49,7 @@ func _physics_process(_delta):
 	elif yDirection > 0:
 		facing = "down"
 	
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_pressed("ui_select"):
 		shoot()
 	
 	# call the animation function
