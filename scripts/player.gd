@@ -9,6 +9,8 @@ var ySpeed = 200.0
 var yDirection = 0
 var coins = 0
 
+var is_attacking = false
+var attack_timer = .67
 # TODO: Add health system variables
 @export var maxHealth = 100
 @export var health = 100
@@ -72,22 +74,30 @@ func _physics_process(_delta):
 	# This is a special Godot function that makes the movement happen
 	move_and_slide()
 	
-	
-	
-		
+	if Input.is_action_just_pressed("ui_focus_next"):
+		is_attacking = true	
+	if is_attacking:
+		print("IS ATTACKING")
+		attack_timer -= _delta
+		if attack_timer <0:
+			is_attacking = false
+			attack_timer = .67
 	
 # TODO: Create animation function (add this outside of _physics_process)
 func update_animation():
 	if xDirection == 0 && yDirection == 0:
 		_animation_player.play("idle_"+ facing)
 	else: _animation_player.play("walk_"+ facing)
-		
+	
 		# TODO: Set the animation based  on the facing direction
 		# Use: _animation_player.play("idle_" + facing)
 		# This combines "idle_" with whatever direction we're facing
 	
-
-
+	
+func on_body_entered(body):
+	#if body is in group enemy and attcking:
+		#hurt enemy
+	pass
 # TODO: Create health change function for interactions
 func change_health(amount):
 	# TODO: Add amount to health (positive = heal, negative = damage)
