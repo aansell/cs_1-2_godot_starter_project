@@ -1,15 +1,18 @@
 extends CharacterBody2D
 @onready var _animation_player: AnimatedSprite2D = $AnimatedSprite2D
+var projectile_original = preload("res://scenes/projectile.tscn")
 
 var xSpeed = 300.0
 var xDirection = 0
 var facing = "down"
 var ySpeed = 300.0
 var yDirection = 0
+var coins = 0
+@export var offset : Vector2 = Vector2(0, -25)
 
 # TODO: Add health system variables
-# var maxHealth = ?
-# var health = ?
+var maxHealth = 10
+var health = maxHealth
 
 func _ready() -> void:
 	pass
@@ -26,18 +29,24 @@ func _physics_process(_delta):
 	# Same idea, but for up and down movement
 	yDirection = Input.get_axis("ui_up", "ui_down")
 	
-	
 	# TODO: Set the player's velocity (how fast they're moving)
 	# Godot's CharacterBody2D uses a velocity system
 	#velocity is a vector, define it as a product of speed and direction
-	
-	
+	velocity.x = xDirection * xSpeed
+	velocity.y = yDirection * ySpeed
 	
 	# TODO: Update facing direction based on movement
-	# Use if statements to check xDirection and yDirection
-	# Set facing to "right", "left", "down", or "up"
-	# Only update facing when actually moving (direction != 0)
+	if xDirection > 0:
+		facing = "right"
+	elif xDirection < 0:
+		facing = "left"
+	elif yDirection < 0:
+		facing = "up"
+	elif yDirection > 0:
+		facing = "down"
 	
+	if Input.is_action_just_pressed("ui_select"):
+		shoot()
 	
 	# call the animation function
 	update_animation()
@@ -50,13 +59,12 @@ func _physics_process(_delta):
 func update_animation():
 	# TODO: Set the animation based on the facing direction
 	if velocity.is_zero_approx():
-		
-	# Use: _animation_player.play("idle_" + facing)
+		_animation_player.play("idle_" + facing)
 	# This combines "idle_" with whatever direction we're facing
 		pass
-	elif velocity.is_zero_approx():
+	elif !velocity.is_zero_approx():
 		#walking animation here
-		
+		_animation_player.play("walk_" + facing)
 		pass
 		
 	
@@ -64,25 +72,32 @@ func update_animation():
 
 # TODO: Create health change function for interactions
 func change_health(_amount:int):
-	# TODO: Add amount to health (positive = heal, negative = damage)
-	# TODO: Make sure health stays between 0 and maxHealth
-	# TODO: Print the new health value
-	# TODO: Check if health <= 0 for death (optional challenge)
-	print("Health changed by: ", _amount)
+		health += _amount
+		if health < 1:
+			die()
+		if health > maxHealth:
+			health = maxHealth
+		print("Health: ", health)
 
+func change_coins(_amount:int):
+	coins += _amount
+	print("you have " +str(coins) +" coins")
 
+func die():
+	print("you died")
+	
 # TODO: Create shooting function
 func shoot():
 	# TODO: Create a new projectile instance
-
+	var projectile_clone = projectile_original.instantiate()
 	
 	# TODO: Set projectile position to player position
-
+	projectile_clone.global_position = position + offset
 	
 	# TODO: Set projectile direction using facing variable
-
+	projectile_clone.set_direction(facing)
 	
 	# TODO: Add projectile to the game world
-	
+	get_tree().get_root().add_child(projectile_clone)
 
 	pass
