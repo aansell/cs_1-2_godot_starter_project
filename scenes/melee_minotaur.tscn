@@ -1001,7 +1001,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xl86w"]
 
-[node name="MeleeMinotaur" type="CharacterBody2D"]
+[node name="MeleeMinotaur" type="CharacterBody2D" groups=["Enemy"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xx5td")
@@ -1014,4 +1014,3 @@ frame_progress = 0.985295
 position = Vector2(0, 9.5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_xl86w")
-disabled = true
