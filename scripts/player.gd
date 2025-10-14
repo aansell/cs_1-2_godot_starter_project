@@ -2,7 +2,7 @@ extends CharacterBody2D
 @onready var _animation_player: AnimatedSprite2D = $AnimatedSprite2D
 var projectile_original = preload("res://scenes/projectile.tscn")
 
-var current_enemy
+var current_enemy = null
 var in_range = false
 var is_attacking = false
 var attack_timer = 0.67
@@ -14,6 +14,7 @@ var yDirection = 0
 var coins = 0
 @export var offset : Vector2 = Vector2(0, -25)
 @onready var melee: Area2D = $Melee
+@onready var melee_hitbox: CollisionShape2D = $Melee/Melee_hitbox
 
 
 
@@ -30,16 +31,15 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("ui_accept"):
 		is_attacking = true
 		print("attacked")
-	
 	if current_enemy != null and is_attacking:
 		current_enemy.queue_free()
 		
-	
-	if is_attacking:
-		attack_timer = _delta
+	elif is_attacking:
+		attack_timer -= _delta
 		if attack_timer < 0:
 			is_attacking = false
 			attack_timer = 0.67
+			print("timer over")
 	
 	xDirection = Input.get_axis("ui_left", "ui_right")
 	
@@ -56,17 +56,18 @@ func _physics_process(_delta):
 		melee_hitbox.position = Vector2(30,0)
 	elif xDirection < 0:
 		facing = "left"
-		melee_hitbox.position = Vector2(0,30)
+		melee_hitbox.position = Vector2(-30,0)
 	elif yDirection < 0:
 		facing = "up"
-		melee_hitbox.position = Vector2(-30,0)
+		melee_hitbox.position = Vector2(0,-30)
 	elif yDirection > 0:
 		facing = "down"
-		melee_hitbox.position = Vector2(0,-30)
+		melee_hitbox.position = Vector2(0,30)
 	
 	if Input.is_action_pressed("ui_select"):
 		shoot()
-	
+		update_animation()
+	 
 	# call the animation function
 	update_animation()
 	
@@ -79,15 +80,17 @@ func _physics_process(_delta):
 
 # TODO: Create animation function (add this outside of _physics_process)
 func update_animation():
-	# TODO: Set the animation based on the facing direction
-	if velocity.is_zero_approx():
-		_animation_player.play("idle_" + facing)
-	# This combines "idle_" with whatever direction we're facing
+	if is_attacking:
+		_animation_player.play("attack_" + facing)
 		pass
-	elif !velocity.is_zero_approx():
-		#walking animation here
-		_animation_player.play("walk_" + facing)
-		pass
+	elif !is_attacking:
+		print("is_attacking =", is_attacking)
+		if velocity.is_zero_approx():
+			_animation_player.play("idle_" + facing)
+			pass
+		elif !velocity.is_zero_approx():
+			_animation_player.play("walk_" + facing)
+			pass
 		
 	
 
@@ -126,15 +129,13 @@ func shoot():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy") and is_attacking:
+	if body.is_in_group("Enemy") and is_attacking:
 		current_enemy = body
 		print("attack enemy")
 	#if in_range:
-		#if is_attacking:
-			#queue_free()
 	pass # Replace with function body.
 
 
 func _on_melee_body_exited(body: Node2D) -> void:
-	if body.is_in_group("enemy") and is_attacking:
+	if body.is_in_group("Enemy") and is_attacking:
 		current_enemy = null
