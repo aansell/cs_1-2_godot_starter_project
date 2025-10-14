@@ -2,6 +2,8 @@ extends CharacterBody2D
 @onready var _animation_player: AnimatedSprite2D = $AnimatedSprite2D
 var projectile_original = preload("res://scenes/projectile.tscn")
 
+var current_enemy
+var in_range = false
 var is_attacking = false
 var attack_timer = 0.67
 var xSpeed = 300.0
@@ -11,6 +13,11 @@ var ySpeed = 300.0
 var yDirection = 0
 var coins = 0
 @export var offset : Vector2 = Vector2(0, -25)
+@onready var melee: Area2D = $Melee
+
+
+
+
 
 # TODO: Add health system variables
 var maxHealth = 10
@@ -22,14 +29,18 @@ func _ready() -> void:
 func _physics_process(_delta):
 	if Input.is_action_pressed("ui_accept"):
 		is_attacking = true
-		print("attack is true")
+		print("attacked")
+	
+	if current_enemy != null and is_attacking:
+		current_enemy.queue_free()
+		
 	
 	if is_attacking:
 		attack_timer = _delta
 		if attack_timer < 0:
 			is_attacking = false
 			attack_timer = 0.67
-			print("attack done")
+	
 	xDirection = Input.get_axis("ui_left", "ui_right")
 	
 	
@@ -42,12 +53,16 @@ func _physics_process(_delta):
 	
 	if xDirection > 0:
 		facing = "right"
+		melee_hitbox.position = Vector2(30,0)
 	elif xDirection < 0:
 		facing = "left"
+		melee_hitbox.position = Vector2(0,30)
 	elif yDirection < 0:
 		facing = "up"
+		melee_hitbox.position = Vector2(-30,0)
 	elif yDirection > 0:
 		facing = "down"
+		melee_hitbox.position = Vector2(0,-30)
 	
 	if Input.is_action_pressed("ui_select"):
 		shoot()
@@ -58,6 +73,9 @@ func _physics_process(_delta):
 	
 	# This is a special Godot function that makes the movement happen
 	move_and_slide()
+
+			
+		
 
 # TODO: Create animation function (add this outside of _physics_process)
 func update_animation():
@@ -105,3 +123,18 @@ func shoot():
 	get_tree().get_root().add_child(projectile_clone)
 
 	pass
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy") and is_attacking:
+		current_enemy = body
+		print("attack enemy")
+	#if in_range:
+		#if is_attacking:
+			#queue_free()
+	pass # Replace with function body.
+
+
+func _on_melee_body_exited(body: Node2D) -> void:
+	if body.is_in_group("enemy") and is_attacking:
+		current_enemy = null

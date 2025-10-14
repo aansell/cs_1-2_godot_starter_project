@@ -4,6 +4,8 @@ var start_time = 1
 var timer = start_time
 var in_range = false
 var Player
+var enemy_max_health = 5
+var enemy_health = enemy_max_health
 func _ready():
 	
 	pass
@@ -12,8 +14,8 @@ func _process(delta: float) -> void:
 	if in_range:
 		timer -= delta
 	if timer < 0:
-			shoot(Player)
-			timer = start_time
+		shoot(Player)
+		timer = start_time
 
 
 

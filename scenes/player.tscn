@@ -805,6 +805,7 @@ radius = 12.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_hf8rj")
+offset = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -30)
@@ -816,10 +817,11 @@ autoplay = "idle_down"
 position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_ptgn0")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Melee" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -29)
+[node name="Melee_hitbox" type="CollisionShape2D" parent="Melee"]
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_qhqgy")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Melee" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Melee" to="." method="_on_melee_body_exited"]
