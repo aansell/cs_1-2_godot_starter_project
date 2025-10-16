@@ -81,7 +81,7 @@ func _physics_process(_delta):
 	# This is a special Godot function that makes the movement happen
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("ui_focus_next"):
+	if Input.is_action_just_pressed("ui_select"):
 		is_attacking = true	
 	if is_attacking:
 		attack_timer -= _delta
