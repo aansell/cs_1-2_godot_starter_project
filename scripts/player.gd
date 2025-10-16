@@ -31,7 +31,7 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("ui_accept"):
 		is_attacking = true
 		print("attacked")
-	if current_enemy != null and is_attacking:
+	if current_enemy != null and is_attacking and in_range:
 		current_enemy.queue_free()
 		
 	elif is_attacking:
@@ -84,7 +84,6 @@ func update_animation():
 		_animation_player.play("attack_" + facing)
 		pass
 	elif !is_attacking:
-		print("is_attacking =", is_attacking)
 		if velocity.is_zero_approx():
 			_animation_player.play("idle_" + facing)
 			pass
@@ -129,13 +128,14 @@ func shoot():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemy") and is_attacking:
+	if body.is_in_group("Enemy"):
+		in_range = true
 		current_enemy = body
-		print("attack enemy")
-	#if in_range:
+		print("near enemy")
 	pass # Replace with function body.
 
 
 func _on_melee_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Enemy") and is_attacking:
+	if body.is_in_group("Enemy"):
+		in_range = false
 		current_enemy = null

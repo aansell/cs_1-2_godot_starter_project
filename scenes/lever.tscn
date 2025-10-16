@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqwd7uptu4bbq"]
+[gd_scene load_steps=7 format=3 uid="uid://bqwd7uptu4bbq"]
 
 [ext_resource type="Texture2D" uid="uid://bl5vm2j0n6sxa" path="res://sprites/items/ALever.png" id="1_iorl1"]
+[ext_resource type="Script" uid="uid://dbwgynl4w3noc" path="res://scenes/lever.gd" id="1_ncfea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kcve"]
-size = Vector2(58, 27)
+size = Vector2(58, 116.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flenb"]
 atlas = ExtResource("1_iorl1")
@@ -34,15 +35,18 @@ animations = [{
 
 [node name="Lever" type="Area2D"]
 scale = Vector2(0.5, 0.5)
+script = ExtResource("1_ncfea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15)
+position = Vector2(0, -59.75)
 shape = SubResource("RectangleShape2D_1kcve")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-41, -65)
 sprite_frames = SubResource("SpriteFrames_3d23c")
 animation = &"on"
-frame_progress = 0.527
 centered = false
 offset = Vector2(12, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
