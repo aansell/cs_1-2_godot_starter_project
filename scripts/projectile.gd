@@ -6,13 +6,14 @@ var speed = 400
 # TODO: Add direction variable to store which way to move
 var direction = Vector2(1,0)
 
-
+var current_enemy
 func _physics_process(_delta):
 	# TODO: Calculate movement using direction and speed
 	# Similar to player movement: velocity = direction * speed
 	position += speed * direction * _delta
 	
-
+	if current_enemy != null:
+		current_enemy.queue_free()
 	
 	# TODO: Apply the movement
 	# Use: move_and_slide()
@@ -40,7 +41,13 @@ func set_direction(_facing : String):
 	# print("Projectile direction set to: ", direction)
 	print("projectile is facing " + _facing) 
 	
-	
+#func _on_melee_body_entered(body: Node2D) -> void:
+#	if body.is_in_group("enemy"):
+#		current_enemy = body
+
+#func _on_melee_body_exited(body: Node2D) -> void:
+#	if body.is_in_group("enemy"):
+#		current_enemy = null
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	# TODO: Remove projectile when it goes off screen
@@ -49,4 +56,10 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	# TODO: Print when projectile is removed
 	# print("Projectile removed - went off screen")
 	print("Projectile removed - went off screen")
-	
+func _on_melee_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		current_enemy = body
+		
+func _on_melee_body_exited(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		current_enemy = null

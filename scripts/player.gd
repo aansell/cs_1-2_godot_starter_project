@@ -8,9 +8,13 @@ var facing = "down"
 var ySpeed = 200.0
 var yDirection = 0
 var coins = 0
-
+@onready var melee_hitbox: CollisionShape2D = $Melee/melee_hitbox
+var current_enemy
+var current_LEVER
 var is_attacking = false
 var attack_timer = .67
+var enemy_timer = .67
+var enemy
 # TODO: Add health system variables
 @export var maxHealth = 100
 @export var health = 100
@@ -18,7 +22,6 @@ var attack_timer = .67
 # TODO: Add projectile scene for shooting
 # var projectile_scene = preload("res://scenes/projectile.tscn")
 
-	
 func change_coins(amount:int):
 	coins += amount
 	print ("you have collected " + str(coins) + " coins")
@@ -56,12 +59,16 @@ func _physics_process(_delta):
 	# Only update facing when actually moving (direction != 0)
 	if xDirection>0:
 		facing = "right"
+		melee_hitbox.position = Vector2(30,-15)
 	elif xDirection<0:
 		facing = "left"
+		melee_hitbox.position = Vector2(-30,-15)
 	elif yDirection >0:
 		facing = "down"	
+		melee_hitbox.position = Vector2(0,20)
 	elif yDirection <0:
 		facing = "up"	
+		melee_hitbox.position = Vector2(0,-45)
 		
 		
 	if Input.is_action_just_pressed("ui_accept"):
@@ -77,27 +84,33 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("ui_focus_next"):
 		is_attacking = true	
 	if is_attacking:
-		print("IS ATTACKING")
 		attack_timer -= _delta
 		if attack_timer <0:
 			is_attacking = false
 			attack_timer = .67
+		
+	if current_enemy != null and is_attacking:
+			current_enemy.queue_free()
+	if current_LEVER != null and is_attacking:
+			current_LEVER._animation_lever.play("off")
+		
 	
 # TODO: Create animation function (add this outside of _physics_process)
 func update_animation():
-	if xDirection == 0 && yDirection == 0:
+	if is_attacking == true:
+		_animation_player.play("attack_"+ facing)
+	elif xDirection == 0 && yDirection == 0:
 		_animation_player.play("idle_"+ facing)
 	else: _animation_player.play("walk_"+ facing)
+	
 	
 		# TODO: Set the animation based  on the facing direction
 		# Use: _animation_player.play("idle_" + facing)
 		# This combines "idle_" with whatever direction we're facing
-	
-	
-func on_body_entered(body):
-	#if body is in group enemy and attcking:
+
+	#if body is in group enemy and attacking:
 		#hurt enemy
-	pass
+	
 # TODO: Create health change function for interactions
 func change_health(amount):
 	# TODO: Add amount to health (positive = heal, negative = damage)
@@ -150,3 +163,19 @@ func die():
 		#scale_amount_set_param(4)
 
 	
+
+
+func _on_melee_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		current_enemy = body
+	if body.is_in_group("LEVER"):
+		current_LEVER = body
+func _on_melee_body_exited(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		current_enemy = null
+	if body.is_in_group("LEVER"):
+		current_LEVER = null
+		current_LEVER._animation_lever.play("on")
+#In projectile? maybe still in player try to make the projectiles do damage.
+#hitting levers use same code as melee as well as keys
+#we're doing that next class when he's gone

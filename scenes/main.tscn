@@ -10820,7 +10820,7 @@ offset_top = -137.51
 offset_right = -248.27
 offset_bottom = -114.51
 
-[node name="Merchant" type="CharacterBody2D" parent="."]
+[node name="Merchant" type="CharacterBody2D" parent="." groups=["enemy"]]
 position = Vector2(-301, -104)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Merchant"]
@@ -10829,7 +10829,6 @@ shape = SubResource("RectangleShape2D_bv41m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Merchant"]
 sprite_frames = SubResource("SpriteFrames_3iktg")
-animation = &"naked_dance"
 autoplay = "naked_dance"
 
 [node name="Items" type="Node" parent="."]
@@ -10922,7 +10921,7 @@ position = Vector2(391, 401)
 sprite_frames = SubResource("SpriteFrames_krpk6")
 animation = &"unlocked"
 
-[node name="Cart" type="Area2D" parent="Items"]
+[node name="Cart" type="Area2D" parent="Items" groups=["enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Cart"]
 shape = SubResource("RectangleShape2D_fs85y")
@@ -10932,7 +10931,7 @@ position = Vector2(-370, -115)
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_rhwoy")
 
-[node name="Spike" type="Node" parent="Items"]
+[node name="Spike" type="Node" parent="Items" groups=["spike"]]
 
 [node name="Spike" parent="Items/Spike" instance=ExtResource("7_oihfm")]
 position = Vector2(163, 399)
@@ -10948,19 +10947,19 @@ position = Vector2(305, 400)
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="MinoTauret" parent="Enemies" instance=ExtResource("16_oljba")]
+[node name="MinoTauret" parent="Enemies" groups=["enemy"] instance=ExtResource("16_oljba")]
 position = Vector2(222, 180)
 
-[node name="MinoTauret2" parent="Enemies" instance=ExtResource("16_oljba")]
+[node name="MinoTauret2" parent="Enemies" groups=["enemy"] instance=ExtResource("16_oljba")]
 position = Vector2(-356, -382)
 
-[node name="MinoTauret3" parent="Enemies" instance=ExtResource("16_oljba")]
+[node name="MinoTauret3" parent="Enemies" groups=["enemy"] instance=ExtResource("16_oljba")]
 position = Vector2(714, 3)
 
-[node name="MinoTauret4" parent="Enemies" instance=ExtResource("16_oljba")]
+[node name="MinoTauret4" parent="Enemies" groups=["enemy"] instance=ExtResource("16_oljba")]
 position = Vector2(-195, 44)
 
-[node name="MinoTauret5" parent="Enemies" instance=ExtResource("16_oljba")]
+[node name="MinoTauret5" parent="Enemies" groups=["enemy"] instance=ExtResource("16_oljba")]
 position = Vector2(-639, 465)
 
 [node name="MeleeMinotaurs" type="Node" parent="Enemies"]

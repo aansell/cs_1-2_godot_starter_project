@@ -23,6 +23,8 @@ GameManager="*res://scripts/game_manager.gd"
 
 player=""
 spike=""
+enemy=""
+LEVER=""
 
 [rendering]
 

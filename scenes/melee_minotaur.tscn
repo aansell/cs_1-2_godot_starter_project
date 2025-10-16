@@ -1,5 +1,6 @@
-[gd_scene load_steps=130 format=3 uid="uid://ddq1bkyn8j1by"]
+[gd_scene load_steps=131 format=3 uid="uid://ddq1bkyn8j1by"]
 
+[ext_resource type="Script" uid="uid://dhnvuvkyau3ys" path="res://scripts/complete_enemy.gd" id="1_adppo"]
 [ext_resource type="Texture2D" uid="uid://busa5myjbwb4i" path="res://sprites/Download38899.png" id="1_nohjn"]
 [ext_resource type="Texture2D" uid="uid://dqoamfql4kdnq" path="res://sprites/Download19204.png" id="2_7o3s3"]
 [ext_resource type="PackedScene" uid="uid://ccymai156a6dr" path="res://scenes/health.tscn" id="3_y37pd"]
@@ -1000,23 +1001,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xl86w"]
-radius = 30.149628
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adppo"]
+size = Vector2(30, 66)
 
-[node name="MeleeMinotaur" type="CharacterBody2D"]
+[node name="MeleeMinotaur" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(0, -30)
+script = ExtResource("1_adppo")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["enemy"]]
 sprite_frames = SubResource("SpriteFrames_xx5td")
 animation = &"crossbow_shoot_right"
 autoplay = "crossbow_shoot_right"
 frame = 7
 frame_progress = 0.985295
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 9.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+position = Vector2(0.5, 6.5)
 scale = Vector2(0.5, 0.5)
-shape = SubResource("CircleShape2D_xl86w")
-disabled = true
+shape = SubResource("RectangleShape2D_adppo")
 
-[node name="Health" parent="." instance=ExtResource("3_y37pd")]
+[node name="Health" parent="." groups=["enemy"] instance=ExtResource("3_y37pd")]

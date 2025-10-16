@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmjwvyc35hdqh"]
+[gd_scene load_steps=9 format=3 uid="uid://bmjwvyc35hdqh"]
 
+[ext_resource type="Script" uid="uid://caw8isfnjy10n" path="res://scripts/key.gd" id="1_fttkb"]
 [ext_resource type="Texture2D" uid="uid://7pm0b6x453jw" path="res://sprites/Tiles/items/key.png" id="1_nroe2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhppc"]
@@ -42,6 +43,7 @@ animations = [{
 
 [node name="Key" type="Area2D"]
 position = Vector2(-1, -10)
+script = ExtResource("1_fttkb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rhppc")

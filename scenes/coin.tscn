@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cmfkqyki7kwt" path="res://sprites/Tiles/items/Coin_Animation.png" id="1_fagbd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ok8aq"]
-radius = 19.15
+radius = 19.999996
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nw0u"]
 atlas = ExtResource("1_fagbd")
