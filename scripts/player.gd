@@ -91,9 +91,14 @@ func _physics_process(_delta):
 		
 	if current_enemy != null and is_attacking:
 			current_enemy.queue_free()
-	if current_LEVER != null and is_attacking:
-			current_LEVER._animation_lever.play("off")
-		
+	
+	if Input.is_action_just_pressed("ui_focus_next"):
+		ySpeed = 400
+		xSpeed = 400
+	
+	if Input.is_action_just_released("ui_focus_next"):
+		ySpeed = 200
+		xSpeed = 200
 	
 # TODO: Create animation function (add this outside of _physics_process)
 func update_animation():
@@ -168,14 +173,12 @@ func die():
 func _on_melee_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		current_enemy = body
-	if body.is_in_group("LEVER"):
-		current_LEVER = body
+
 func _on_melee_body_exited(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		current_enemy = null
-	if body.is_in_group("LEVER"):
-		current_LEVER = null
-		current_LEVER._animation_lever.play("on")
+
 #In projectile? maybe still in player try to make the projectiles do damage.
 #hitting levers use same code as melee as well as keys
 #we're doing that next class when he's gone
+#fix lever sprites

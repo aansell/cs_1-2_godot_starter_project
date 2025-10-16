@@ -10829,6 +10829,7 @@ shape = SubResource("RectangleShape2D_bv41m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Merchant"]
 sprite_frames = SubResource("SpriteFrames_3iktg")
+animation = &"naked_dance"
 autoplay = "naked_dance"
 
 [node name="Items" type="Node" parent="."]
