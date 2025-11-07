@@ -15,3 +15,5 @@ func _on_body_entered(body):
 func set_direction(target):
 	
 	direction = position.direction_to(target)
+	if direction.x < 0:
+		scale.x *= -1

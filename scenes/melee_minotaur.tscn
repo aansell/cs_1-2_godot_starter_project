@@ -1,6 +1,7 @@
-[gd_scene load_steps=129 format=3 uid="uid://ddq1bkyn8j1by"]
+[gd_scene load_steps=133 format=3 uid="uid://ddq1bkyn8j1by"]
 
 [ext_resource type="Texture2D" uid="uid://busa5myjbwb4i" path="res://sprites/Download38899.png" id="1_nohjn"]
+[ext_resource type="Script" uid="uid://b867cbu8mnk4h" path="res://scripts/melee_minotaur.gd" id="1_vltjp"]
 [ext_resource type="Texture2D" uid="uid://dqoamfql4kdnq" path="res://sprites/Download19204.png" id="2_7o3s3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dgyv5"]
@@ -1001,7 +1002,17 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xl86w"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vltjp"]
+radius = 39.012817
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_adppo"]
+radius = 82.29824
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uk8e4"]
+radius = 192.09373
+
 [node name="MeleeMinotaur" type="CharacterBody2D"]
+script = ExtResource("1_vltjp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xx5td")
@@ -1015,3 +1026,28 @@ position = Vector2(0, 9.5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_xl86w")
 disabled = true
+
+[node name="melee" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="melee"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_vltjp")
+
+[node name="chase" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chase"]
+position = Vector2(-1, 11)
+shape = SubResource("CircleShape2D_adppo")
+
+[node name="ranged" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ranged"]
+position = Vector2(-1, 10)
+shape = SubResource("CircleShape2D_uk8e4")
+
+[connection signal="body_entered" from="melee" to="." method="_on_melee_body_entered"]
+[connection signal="body_exited" from="melee" to="." method="_on_melee_body_exited"]
+[connection signal="body_entered" from="chase" to="." method="_on_chase_body_entered"]
+[connection signal="body_exited" from="chase" to="." method="_on_chase_body_exited"]
+[connection signal="body_entered" from="ranged" to="." method="_on_ranged_body_entered"]
+[connection signal="body_exited" from="ranged" to="." method="_on_ranged_body_exited"]
