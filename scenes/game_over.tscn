@@ -1,6 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://t3a3efilcqjw"]
+[gd_scene load_steps=5 format=3 uid="uid://c0t5yfipmqyro"]
 
 [ext_resource type="Texture2D" uid="uid://4655i7r7kgy6" path="res://sprites/GameOver.png" id="1_vkfg6"]
 
-[node name="Game Over" type="Sprite2D"]
-texture = ExtResource("1_vkfg6")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xeevv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqhvx"]
+atlas = ExtResource("1_vkfg6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tbwuq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqhvx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xeevv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+position = Vector2(600, 580)
+scale = Vector2(40, 40)
+sprite_frames = SubResource("SpriteFrames_tbwuq")

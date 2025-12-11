@@ -1,10 +1,45 @@
 extends CharacterBody2D
-
-
+var projectile_original = preload("res://scenes/enemy_projectile.tscn")
+var start_time = 1
+var timer = start_time
+var in_range = false
+var Player
+var enemy_max_health = 5
+var enemy_health = enemy_max_health
 func _ready():
 	
 	pass
 
 func _process(delta: float) -> void:
-	pass
+	if in_range:
+		timer -= delta
+	if timer < 0:
+		shoot(Player)
+		timer = start_time
+
+
+
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		print("player in range")
+		Player = body
+		in_range = true
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		Player = body
+		in_range = false
+
+
+func shoot(Player):
 	
+	var projectile_clone = projectile_original.instantiate()
+	
+	projectile_clone.global_position = position
+	
+	projectile_clone.set_direction(Player.position)
+	
+	get_tree().get_root().add_child(projectile_clone)
